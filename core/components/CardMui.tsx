@@ -7,9 +7,17 @@ interface cardProps {
   title: string;
   description: string;
   src: string;
+  width: number;
+  height: number;
 }
 
-export default function CardMui({ title, description, src }: cardProps) {
+export default function CardMui({
+  title,
+  description,
+  src,
+  width,
+  height,
+}: cardProps) {
   return (
     <Card
       sx={{
@@ -23,16 +31,19 @@ export default function CardMui({ title, description, src }: cardProps) {
       }}
     >
       <CardContent sx={{ textAlign: "center" }}>
-        <Image src={src} alt="picture" width={500} height={550} />
+        <Image src={src} alt="picture" width={width} height={height} />
         <Typography
-          sx={{ padding: 2 }}
-          gutterBottom
+          sx={{ padding: 2, fontWeight: "bold" }}
           variant="h5"
           component="div"
         >
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          sx={{ fontWeight: "bold" }}
+          variant="body2"
+          color="text.secondary"
+        >
           {description}
         </Typography>
       </CardContent>

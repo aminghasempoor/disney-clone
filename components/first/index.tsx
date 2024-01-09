@@ -29,16 +29,22 @@ const FirstComponent = () => {
         spacing={5}
       >
         <CardMui
+          width={500}
+          height={500}
           src="/TVshow.jpg"
           title="TV Shows"
           description="Television shows can be viewed live"
         />
         <CardMui
+          width={500}
+          height={500}
           src="/Movies.jpg"
           title="Movies"
           description="a series of still images were recorded"
         />
         <CardMui
+          width={500}
+          height={500}
           src="/premium.jpg"
           title="Premiums"
           description="Premium access to all movies"
