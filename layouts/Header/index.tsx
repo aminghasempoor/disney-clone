@@ -1,13 +1,13 @@
 "use client";
 import { Button, CssBaseline, Stack } from "@mui/material";
 import { lightTheme, darkTheme } from "@/core/utils/theme";
-import LogoSvg from "@/core/components/SVGs/LogoSvg";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
 import { LightMode } from "@mui/icons-material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
+import LogoSvg from "@/core/components/svgs/LogoSvg";
 
 function HeaderLayout({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState("light");
@@ -32,6 +32,7 @@ function HeaderLayout({ children }: { children: React.ReactNode }) {
         justifyContent="space-between"
         sx={{
           px: 5,
+          zIndex: 5,
           position: "absolute",
           width: "100%",
         }}
