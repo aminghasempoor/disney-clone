@@ -1,19 +1,18 @@
-import CardMui from "@/core/components/CardMui";
-import { Card, Paper, Stack, Typography } from "@mui/material";
+import { Paper, Stack, Typography } from "@mui/material";
 
-const MainComponent = () => {
+const BannerComponent = () => {
   return (
     <Stack>
       <Stack>
-        <div
-          style={{
+        <Stack
+          sx={{
             position: "absolute",
             width: "100%",
             height: "70vh",
             background: "linear-gradient(to right, black, transparent)",
           }}
         />
-        <Paper elevation={5}>
+        <Paper elevation={24}>
           <img
             src={"/Movies.jpg"}
             alt="picture"
@@ -41,4 +40,4 @@ const MainComponent = () => {
     </Stack>
   );
 };
-export default MainComponent;
+export default BannerComponent;

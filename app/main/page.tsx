@@ -1,5 +1,14 @@
-import MainComponent from "@/components/Main";
+import BannerComponent from "@/components/Banner";
+import RowComponent from "@/components/Rows";
 
 export default function Main() {
-  return <MainComponent />;
+  return (
+    <>
+      <BannerComponent />
+      <RowComponent />
+      <RowComponent />
+      <RowComponent />
+      <RowComponent />
+    </>
+  );
 }
