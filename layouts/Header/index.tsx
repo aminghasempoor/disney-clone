@@ -49,7 +49,11 @@ function HeaderLayout({ children }: { children: React.ReactNode }) {
             </Button>
           </Link>
           <Button onClick={toggleTheme}>
-            {theme === "dark" ? <LightMode /> : <DarkModeIcon />}
+            {theme === "dark" ? (
+              <LightMode sx={{ color: "yellow" }} />
+            ) : (
+              <DarkModeIcon sx={{ color: "black" }} />
+            )}
           </Button>
         </Stack>
       </Stack>
