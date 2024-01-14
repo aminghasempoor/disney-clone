@@ -1,26 +1,21 @@
-import { Stack, Typography } from "@mui/material";
-import { useFormik } from "formik";
-import React from "react";
-import * as Yup from "yup";
+"use client";
+import { Snackbar, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
+import LoginContent from "./LoginContent";
 
 function LoginComponent() {
-  const initialValues = {
-    email: "",
-    password: "",
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
   };
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().required("required"),
-    password: Yup.string().required("required"),
-  });
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {},
-  });
-
   return (
     <Stack>
+      <Snackbar
+        open={open}
+        autoHideDuration={600}
+        onClose={handleClose}
+        message="Request has been sent!"
+      />
       <img
         src={"/login.jpg"}
         style={{
@@ -45,8 +40,6 @@ function LoginComponent() {
       <Stack
         sx={{
           position: "absolute",
-          px: 4,
-          py: 6,
           width: "100%",
           height: "100%",
         }}
@@ -55,16 +48,15 @@ function LoginComponent() {
           sx={{
             position: "relative",
             top: "50%",
-            left: "50%",
+            left: "48%",
+            m: 2,
             transform: "translate(-50%, -50%)",
-            width: 450,
             maxWidth: "500px",
-            height: 500,
             backgroundColor: "#121212",
-            opacity: 0.75,
+            opacity: 0.9,
           }}
         >
-          <Stack sx={{ p: 4, height: "100%", width: "100%" }}>
+          <Stack sx={{ p: 3, height: "100%", width: "100%" }}>
             <Typography
               textAlign={"center"}
               variant="h4"
@@ -73,6 +65,7 @@ function LoginComponent() {
             >
               LOG IN
             </Typography>
+            <LoginContent setOpen={setOpen} />
           </Stack>
         </Stack>
       </Stack>
