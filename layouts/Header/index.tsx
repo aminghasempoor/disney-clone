@@ -1,5 +1,5 @@
 "use client";
-import { Button, CssBaseline, Stack } from "@mui/material";
+import { Button, CssBaseline, Stack, Typography } from "@mui/material";
 import { lightTheme, darkTheme } from "@/core/utils/theme";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
@@ -45,7 +45,13 @@ function HeaderLayout({ children }: { children: React.ReactNode }) {
         <Stack direction="row" spacing={2}>
           <Link href="/login">
             <Button color="error" variant="text" endIcon={<LoginIcon />}>
-              LOG IN
+              <Typography
+                fontWeight={"bold"}
+                variant="subtitle1"
+                color={"rgb(219, 32, 44)"}
+              >
+                LOG IN
+              </Typography>
             </Button>
           </Link>
           <Button onClick={toggleTheme}>
