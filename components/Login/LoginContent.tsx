@@ -2,15 +2,16 @@
 import {
   Button,
   Checkbox,
-  FormControl,
   FormControlLabel,
   Stack,
   TextField,
+  Typography,
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import React, { Dispatch, SetStateAction } from "react";
 import LoginIcon from "@mui/icons-material/Login";
+import Link from "next/link";
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -68,26 +69,29 @@ function LoginContent({ setOpen }: Props) {
         />
       </Stack>
       <Stack>
-        <FormControl required>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={formik.values.checkedBox}
-                onChange={(event) => {
-                  formik.setFieldValue("checkedBox", event.target.checked);
-                }}
-              />
-            }
-            label="Accept terms of legacy"
-          />
-        </FormControl>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={formik.values.checkedBox}
+              onChange={(event) => {
+                formik.setFieldValue("checkedBox", event.target.checked);
+              }}
+            />
+          }
+          label="Remember me ?"
+        />
+      </Stack>
+      <Stack>
+        <Typography>
+          Dont have an account ? <Link href={"/signup"}>Sign Up</Link>
+        </Typography>
       </Stack>
       <Stack>
         <Button
           fullWidth
-          onClick={formik.handleSubmit}
+          onClick={() => formik.handleSubmit()}
           color="error"
-          type="submit"
+          type="button"
           variant="outlined"
           size="large"
           sx={{ my: 1 }}

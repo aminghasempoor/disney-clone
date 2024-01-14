@@ -18,10 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        style={{ width: "100vw", height: "100vh", margin: 0, padding: 0 }}
-        className={inter.className}
-      >
+      <body style={{ margin: 0, padding: 0 }} className={inter.className}>
         <HeaderLayout>{children}</HeaderLayout>
       </body>
     </html>

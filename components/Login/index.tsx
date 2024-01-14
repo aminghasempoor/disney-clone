@@ -12,7 +12,7 @@ function LoginComponent() {
     <Stack>
       <Snackbar
         open={open}
-        autoHideDuration={600}
+        autoHideDuration={900}
         onClose={handleClose}
         message="Request has been sent!"
       />
@@ -53,6 +53,7 @@ function LoginComponent() {
             transform: "translate(-50%, -50%)",
             maxWidth: "500px",
             backgroundColor: "#121212",
+            borderRadius: 4,
             opacity: 0.9,
           }}
         >

@@ -1,9 +1,8 @@
 "use client";
 import { GET_MOVIES } from "@/core/data/apiRoutes";
 import { useEffect, useState } from "react";
-
 const useMovies = () => {
-  const [moviesList, setMoviesList] = useState([]);
+  const [moviesList, setMoviesList] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorEcured, setErrorEcured] = useState(false);
 

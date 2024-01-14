@@ -1,6 +1,5 @@
 "use client";
 import MovieCard from "@/core/components/MovieCard";
-import useMovies from "@/lib/app/hooks/useMovies";
 import { CircularProgress, IconButton, Stack } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -10,12 +9,15 @@ interface Movie {
   overview: string;
   backdrop_path: string;
 }
+interface Props {
+  moviesList: [];
+  isLoading: Boolean;
+  errorEcured: Boolean;
+}
 
-function RowComponent() {
-  const { moviesList, isLoading, errorEcured } = useMovies();
+function RowComponent({ moviesList, isLoading, errorEcured }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  console.log(moviesList);
 
   const handleScroll = (scrollOffset: number) => {
     if (containerRef.current) {
@@ -49,8 +51,8 @@ function RowComponent() {
           sx={{
             overflowX: "hidden",
             width: "100%",
-            py: 1,
-            my: 5,
+            py: 2,
+            my: 2,
           }}
           ref={containerRef}
           direction={"row"}
