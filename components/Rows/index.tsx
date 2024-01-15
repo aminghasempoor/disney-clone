@@ -1,16 +1,20 @@
 "use client";
 import MovieCard from "@/core/components/MovieCard";
-import { CircularProgress, IconButton, Skeleton, Stack } from "@mui/material";
+import { IconButton, Skeleton, Stack } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import React, { useRef, useState } from "react";
+import RowSkeleton from "./RowSkeleton";
+import RowContent from "./RowContent";
+import MdChevrons from "@/core/components/MdChevrons";
 interface Movie {
   title: string;
   overview: string;
   backdrop_path: string;
+  release_date: string;
 }
 interface Props {
-  moviesList: [];
+  moviesList: Movie[];
   isLoading: Boolean;
   errorEcured: Boolean;
 }
@@ -49,59 +53,26 @@ function RowComponent({ moviesList, isLoading, errorEcured }: Props) {
         direction={"row"}
         spacing={2}
       >
-        <IconButton
-          className="chevron"
-          sx={{
-            zIndex: 1,
-            position: "absolute",
-            top: "50%",
-            left: 0,
-            transform: "translateY(-50%)",
-            height: 50,
-            color: "red",
-            opacity: isHovered ? 1 : 0,
-            transition: "opacity 0.3s",
-          }}
-          onClick={() => handleScroll(-200)}
-        >
-          <ChevronLeftIcon fontSize="large" />
-        </IconButton>
-        {isLoading
-          ? // Render multiple skeletons while loading
-            Array.from({ length: 5 }).map((_, index) => (
-              <Stack key={index} spacing={1} sx={{ px: 5 }}>
-                <Skeleton variant="rectangular" width={300} height={150} />
-                <Skeleton variant="text" width={100} height={50} />
-                <Skeleton variant="text" width={200} height={20} />
-              </Stack>
-            ))
-          : // Render MovieCard components when not loading
-            moviesList.map((movie: Movie, index) => (
-              <Stack key={index}>
-                <MovieCard
-                  title={movie.title}
-                  description={movie.overview}
-                  imageURL={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                />
-              </Stack>
-            ))}
-        <IconButton
-          className="chevron"
-          sx={{
-            zIndex: 1,
-            position: "absolute",
-            top: "50%",
-            right: 0,
-            transform: "translateY(-50%)",
-            height: 50,
-            color: "red",
-            opacity: isHovered ? 1 : 0,
-            transition: "opacity 0.3s",
-          }}
-          onClick={() => handleScroll(200)}
-        >
-          <ChevronRightIcon fontSize="large" />
-        </IconButton>
+        <MdChevrons
+          position="left"
+          icon={ChevronLeftIcon}
+          handleScroll={handleScroll}
+          isHovered={isHovered}
+        />
+        {isLoading ? (
+          <RowSkeleton />
+        ) : (
+          // Render MovieCard components when not loading
+          moviesList.map((movie: Movie, index) => (
+            <RowContent movie={movie} key={index} />
+          ))
+        )}
+        <MdChevrons
+          position="right"
+          icon={ChevronRightIcon}
+          handleScroll={handleScroll}
+          isHovered={isHovered}
+        />
       </Stack>
     </Stack>
   );

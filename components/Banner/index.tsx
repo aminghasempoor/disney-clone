@@ -1,8 +1,10 @@
-import { Paper, Skeleton, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
+import BannerSkeleton from "./BannerSkeleton";
+import BannerContent from "./BannerContent";
 interface Props {
-  moviesList: [];
-  isLoading: Boolean;
-  errorEcured: Boolean;
+  moviesList: Movie[];
+  isLoading: boolean;
+  errorEcured: boolean;
 }
 interface Movie {
   backdrop_path: string;
@@ -21,69 +23,11 @@ const BannerComponent = ({ moviesList, isLoading, errorEcured }: Props) => {
             position: "absolute",
             width: "100%",
             height: "70vh",
-            background: "linear-gradient(to right, black, transparent)",
+            background: "linear-gradient(to bottom right, black, transparent)",
           }}
         />
         <Stack>
-          {isLoading ? (
-            <Stack>
-              <Skeleton
-                sx={{ bgcolor: "gray.700" }}
-                variant="rectangular"
-                width={"100%"}
-                height={"70vh"}
-              />
-              <Skeleton
-                variant="text"
-                width={"20%"}
-                height={"10%"}
-                sx={{
-                  position: "absolute",
-                  top: "30%",
-                  mx: 2,
-                  bgcolor: "gray.700",
-                }}
-              />
-              <Skeleton
-                variant="text"
-                width={"60%"}
-                height={"27%"}
-                sx={{
-                  position: "absolute",
-                  top: "33%",
-                  mx: 2,
-                  bgcolor: "gray.700",
-                }}
-              />
-            </Stack>
-          ) : (
-            <Stack>
-              <img
-                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                alt="picture"
-                style={{
-                  width: "100%",
-                  height: "70vh",
-                  objectFit: "fill",
-                  objectPosition: "center",
-                }}
-              />
-              <Stack
-                spacing={2}
-                sx={{ position: "absolute", top: "30%", p: 5 }}
-              >
-                <Typography color={"white"} variant="h2">
-                  {movie?.title}
-                </Typography>
-                <Typography sx={{ width: "70%" }} color={"white"} variant="h6">
-                  {movie?.overview}
-                </Typography>
-                <Typography color={"white"} variant="body2">
-                  {movie?.release_date}
-                </Typography>
-              </Stack>
-            </Stack>
-          )}
+          {isLoading ? <BannerSkeleton /> : <BannerContent movie={movie} />}
         </Stack>
       </Stack>
     </Stack>
