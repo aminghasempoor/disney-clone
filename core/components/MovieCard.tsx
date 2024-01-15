@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useMediaQuery, useTheme } from "@mui/material";
 interface MovieCardProps {
   title: string;
   description: string;
@@ -16,10 +17,14 @@ export default function MovieCard({
   description,
   imageURL,
 }: MovieCardProps) {
+  const theme = useTheme();
+  const isMediumScreen: boolean = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen: boolean = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Card
+      variant="outlined"
       sx={{
-        width: 500,
+        width: 350,
         borderRadius: 5,
         transition: "transform 0.3s ease-in-out",
         "&:hover": {
@@ -35,15 +40,25 @@ export default function MovieCard({
         image={imageURL}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title.substring(0, 30)}
+        <Typography
+          gutterBottom
+          variant={isSmallScreen ? "body1" : isMediumScreen ? "h6" : "h5"}
+        >
+          {title.length > 20 ? title.substring(0, 20) + " ..." : title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description.substring(0, 100) + " ..."}
+        <Typography
+          variant={
+            isSmallScreen ? "caption" : isMediumScreen ? "subtitle2" : "body2"
+          }
+          color="text.secondary"
+        >
+          {description.substring(0, 60) + " ..."}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Watch</Button>
+        <Button color="error" size="small">
+          Watch
+        </Button>
         <Button size="small">Save to favorites</Button>
       </CardActions>
     </Card>
