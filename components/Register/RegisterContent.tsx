@@ -16,14 +16,28 @@ interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-function LoginContent({ setOpen }: Props) {
+function RegisterContent({ setOpen }: Props) {
   const validationSchema = Yup.object({
     password: Yup.string().required("Password is required"),
+    confirm_password: Yup.mixed()
+      .test(
+        "match passwords",
+        "Confirm password and password should match",
+        function (value) {
+          // Ensure value is not undefined before comparing
+          if (value !== undefined) {
+            return value === this.parent.password;
+          }
+          return false;
+        }
+      )
+      .required("Confirm Password is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
   });
   const initialValues = {
     password: "",
     email: "",
+    confirm_password: "",
     checkedBox: false,
   };
 
@@ -69,6 +83,25 @@ function LoginContent({ setOpen }: Props) {
         />
       </Stack>
       <Stack>
+        <TextField
+          name="confirm_password"
+          label="Confirm Password"
+          type="password"
+          value={formik.values.confirm_password}
+          onChange={formik.handleChange}
+          fullWidth
+          variant="outlined"
+          onBlur={formik.handleBlur("confirm_password")}
+          error={
+            formik.touched.confirm_password &&
+            Boolean(formik.errors.confirm_password)
+          }
+          helperText={
+            formik.touched.confirm_password && formik.errors.confirm_password
+          }
+        />
+      </Stack>
+      <Stack>
         <FormControlLabel
           control={
             <Checkbox
@@ -78,12 +111,12 @@ function LoginContent({ setOpen }: Props) {
               }}
             />
           }
-          label="Remember me ?"
+          label="Accept the terms of policy ?"
         />
       </Stack>
       <Stack>
         <Typography>
-          Dont have an account ? <Link href={"/register"}>Sign Up</Link>
+          Already sign up ? <Link href={"/login"}>Log In</Link>
         </Typography>
       </Stack>
       <Stack>
@@ -109,4 +142,4 @@ function LoginContent({ setOpen }: Props) {
   );
 }
 
-export default LoginContent;
+export default RegisterContent;
