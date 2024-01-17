@@ -43,24 +43,24 @@ function HeaderLayout({ children }: { children: React.ReactNode }) {
           </Link>
         </Stack>
         <Stack direction="row" spacing={2}>
-          <Link href="/login">
+          <Link href="/register">
             <Button color="error" variant="text" endIcon={<LoginIcon />}>
               <Typography
                 fontWeight={"bold"}
                 variant="subtitle1"
                 color={"rgb(219, 32, 44)"}
               >
-                LOG IN
+                Sign Up
               </Typography>
             </Button>
           </Link>
-          <Button onClick={toggleTheme}>
+          {/* <Button onClick={toggleTheme}>
             {theme === "dark" ? (
               <LightMode sx={{ color: "#CBB33B" }} />
             ) : (
               <DarkModeIcon sx={{ color: "#A09C96" }} />
             )}
-          </Button>
+          </Button> */}
         </Stack>
       </Stack>
       {children}

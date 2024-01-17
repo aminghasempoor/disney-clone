@@ -9,7 +9,7 @@ function LoginComponent() {
     setOpen(false);
   };
   return (
-    <Stack>
+    <Stack sx={{ width: "100%", height: "100%" }}>
       <Snackbar
         open={open}
         autoHideDuration={900}
