@@ -1,5 +1,12 @@
 "use client";
-import { Button, CssBaseline, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  CssBaseline,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { lightTheme, darkTheme } from "@/core/utils/theme";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
@@ -7,21 +14,11 @@ import { LightMode } from "@mui/icons-material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
-import LogoSvg from "@/core/components/svgs/LogoSvg";
+import LeftContent from "./LeftContent";
+import RightContent from "./RightContent";
 
 function HeaderLayout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    setTheme(storedTheme || "light");
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
+  const [theme, setTheme] = useState("dark");
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -37,31 +34,8 @@ function HeaderLayout({ children }: { children: React.ReactNode }) {
           width: "100%",
         }}
       >
-        <Stack>
-          <Link href={"/"}>
-            <LogoSvg width={120} height={80} />
-          </Link>
-        </Stack>
-        <Stack direction="row" spacing={2}>
-          <Link href="/register">
-            <Button color="error" variant="text" endIcon={<LoginIcon />}>
-              <Typography
-                fontWeight={"bold"}
-                variant="subtitle1"
-                color={"rgb(219, 32, 44)"}
-              >
-                Sign Up
-              </Typography>
-            </Button>
-          </Link>
-          {/* <Button onClick={toggleTheme}>
-            {theme === "dark" ? (
-              <LightMode sx={{ color: "#CBB33B" }} />
-            ) : (
-              <DarkModeIcon sx={{ color: "#A09C96" }} />
-            )}
-          </Button> */}
-        </Stack>
+        <LeftContent />
+        <RightContent theme={theme} setTheme={setTheme} />
       </Stack>
       {children}
     </ThemeProvider>
