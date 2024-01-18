@@ -13,21 +13,21 @@ const FirstComponent = () => {
         imageURL="/images/feature-4.png"
         reverseLayout={false}
       />
-      <Divider variant="middle" />
+      <Divider variant="middle" component="li" />
       <SecondContent
         title="Download your shows to watch offline"
         description="Save your favorites easily and always have it."
         imageURL="/images/feature-2.png"
         reverseLayout={true}
       />
-      <Divider variant="middle" />
+      <Divider variant="middle" component="li" />
       <SecondContent
         title="Watch everywhere"
         description="Stream unlimitedmovies and TV shows"
         imageURL="/images/feature-3.png"
         reverseLayout={false}
       />
-      <Divider variant="middle" />
+      <Divider variant="middle" component="li" />
       <AccordingContent />
     </Stack>
   );
