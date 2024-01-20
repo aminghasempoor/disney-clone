@@ -39,22 +39,26 @@ function FirstContent() {
       <Stack
         spacing={3}
         sx={{
+          width: "100%",
+          px: 5,
           position: "absolute",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
       >
-        <Stack>
+        <Stack spacing={2}>
           <Typography
             align="center"
-            variant={isSmallScreen ? "h6" : isMediumScreen ? "h4" : "h1"}
+            fontWeight={"bold"}
+            variant={isSmallScreen ? "h6" : isMediumScreen ? "h3" : "h1"}
           >
             Unlimited Movies, TV shows
           </Typography>
           <Typography
             align="center"
-            variant={isSmallScreen ? "body1" : isMediumScreen ? "h6" : "h4"}
+            fontWeight={"bold"}
+            variant={isSmallScreen ? "body1" : isMediumScreen ? "h5" : "h4"}
             color={"red"}
           >
             Watch Anywhere Cancel Anytime
@@ -63,25 +67,20 @@ function FirstContent() {
         <Stack spacing={2}>
           <Typography
             align="center"
-            variant={
-              isSmallScreen
-                ? "body1"
-                : isMediumScreen
-                ? "subtitle2"
-                : "subtitle1"
-            }
+            variant={isMediumScreen ? "subtitle1" : "h6"}
           >
             Ready to watch ? Enter Your Email.
           </Typography>
           <Stack
-            direction={{ xs: "column", sm: "row" }}
+            direction={{ xs: "column", md: "row" }}
             justifyContent={"center"}
             alignItems={"center"}
             spacing={3}
+            sx={{ px: 5 }}
           >
             <TextField
               size="small"
-              fullWidth
+              sx={{ width: "60%" }}
               color="primary"
               label="Email Address"
               variant="outlined"
@@ -89,7 +88,7 @@ function FirstContent() {
             <Button
               size="large"
               variant="outlined"
-              sx={{ bgcolor: "red", width: "100%" }}
+              sx={{ bgcolor: "red" }}
               color="error"
             >
               Get Started!!!

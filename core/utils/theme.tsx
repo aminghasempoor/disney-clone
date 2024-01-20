@@ -1,23 +1,19 @@
 import { createTheme } from "@mui/material/styles";
 
-// Light theme
-const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: "#DB202C",
-    },
-    secondary: {
-      main: "#AE2F37",
-    },
-  },
-});
-
-// Dark theme
-const darkTheme = createTheme({
+const theme = createTheme({
   palette: {
     mode: "dark",
+    text: {
+      primary: "#fff",
+      secondary: "rgba(255, 255, 255, 0.7)",
+      disabled: "rgba(255, 255, 255, 0.5)",
+    },
+  },
+  typography: {
+    allVariants: {
+      color: "white",
+    },
   },
 });
 
-export { lightTheme, darkTheme };
+export { theme };

@@ -13,8 +13,8 @@ function AuthContent() {
       justifyContent={"center"}
     >
       <Link href="/profile">
-        <Badge color="primary">
-          <NotificationsIcon fontSize="medium" />
+        <Badge>
+          <NotificationsIcon style={{ color: "white" }} fontSize="small" />
         </Badge>
       </Link>
       <Link href="/profile">
@@ -24,7 +24,11 @@ function AuthContent() {
           variant="text"
           endIcon={<PersonIcon />}
         >
-          <Typography fontWeight={"bold"} color={"rgb(219, 32, 44)"}>
+          <Typography
+            sx={{ pt: 0.5 }}
+            fontWeight={"bold"}
+            color={"rgb(219, 32, 44)"}
+          >
             Profile
           </Typography>
         </Button>
