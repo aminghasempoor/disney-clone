@@ -14,7 +14,7 @@ function AuthContent() {
     >
       <Link href="/profile">
         <Badge>
-          <NotificationsIcon style={{ color: "white" }} fontSize="small" />
+          <NotificationsIcon fontSize="small" />
         </Badge>
       </Link>
       <Link href="/profile">
