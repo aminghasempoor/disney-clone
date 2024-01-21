@@ -57,7 +57,7 @@ function LoginComponent() {
             opacity: 0.9,
           }}
         >
-          <Stack sx={{ p: 3, height: "100%", width: "100%" }}>
+          <Stack sx={{ p: 2, height: "100%", width: "100%" }}>
             <Typography
               textAlign={"center"}
               variant="h4"
