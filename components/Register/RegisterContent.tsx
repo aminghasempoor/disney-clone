@@ -53,7 +53,7 @@ function RegisterContent({ setOpen }: Props) {
   });
 
   return (
-    <Stack sx={{ padding: 2 }} spacing={2}>
+    <Stack sx={{ padding: 1 }} spacing={2}>
       <Stack>
         <TextField
           name="email"

@@ -51,7 +51,7 @@ function RightContent() {
               </IconButton>
             </Tooltip>
           </Stack>
-          {!token ? <AuthContent /> : <WithoutAuthContent />}
+          {token ? <AuthContent /> : <WithoutAuthContent />}
         </>
       ) : (
         <Stack justifyContent={"end"}>

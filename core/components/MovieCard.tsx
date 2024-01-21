@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Stack, useMediaQuery, useTheme } from "@mui/material";
 interface MovieCardProps {
   title: string;
   description: string;
@@ -21,25 +21,28 @@ export default function MovieCard({
   const isMediumScreen: boolean = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen: boolean = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Card
-      variant="outlined"
+    <Stack
+      spacing={2}
       sx={{
         width: 350,
-        borderRadius: 5,
         transition: "transform 0.3s ease-in-out",
+        boxShadow: "none", // Forcefully remove any box-shadow
         "&:hover": {
           cursor: "pointer",
           transform: "translateY(-10px)",
         },
       }}
     >
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        width={"100%"}
-        image={imageURL}
-      />
-      <CardContent>
+      <Stack>
+        <img
+          src={imageURL}
+          alt="picture"
+          style={{
+            borderRadius: 5,
+          }}
+        />
+      </Stack>
+      <Stack>
         <Typography
           gutterBottom
           variant={isSmallScreen ? "body1" : isMediumScreen ? "h6" : "h5"}
@@ -52,15 +55,15 @@ export default function MovieCard({
           }
           color="text.secondary"
         >
-          {description.substring(0, 60) + " ..."}
+          {description.substring(0, 120) + " ..."}
         </Typography>
-      </CardContent>
-      <CardActions>
+      </Stack>
+      <Stack direction={"row"}>
         <Button color="error" size="small">
           Watch
         </Button>
         <Button size="small">Save to favorites</Button>
-      </CardActions>
-    </Card>
+      </Stack>
+    </Stack>
   );
 }

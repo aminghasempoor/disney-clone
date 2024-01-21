@@ -6,7 +6,7 @@ import React from "react";
 
 function WithoutAuthContent() {
   return (
-    <Stack>
+    <Stack direction={"row"}>
       <Link href="/register">
         <Button color="error" variant="text" endIcon={<EditNoteIcon />}>
           <Typography fontWeight={"bold"} color={"rgb(219, 32, 44)"}>

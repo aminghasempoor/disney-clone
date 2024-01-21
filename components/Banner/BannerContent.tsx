@@ -30,16 +30,17 @@ function BannerContent({ movie }: BannerContentProps) {
         }}
       />
       <Stack
-        spacing={2}
+        spacing={1}
         sx={{
           position: "absolute",
-          top: "30%",
+          top: "25%",
           p: 5,
         }}
       >
         <Typography
           color="white"
-          variant={isSmallScreen ? "body1" : isMediumScreen ? "h4" : "h2"}
+          fontWeight={"bold"}
+          variant={isSmallScreen ? "h6" : isMediumScreen ? "h5" : "h4"}
         >
           {movie?.title}
         </Typography>
@@ -47,9 +48,9 @@ function BannerContent({ movie }: BannerContentProps) {
         <Typography
           sx={{ width: "70%" }}
           color={"white"}
-          variant={isSmallScreen ? "caption" : "body1"}
+          variant={isSmallScreen ? "body1" : isMediumScreen ? "h6" : "h5"}
         >
-          {movie?.overview}
+          {movie?.overview.substring(0, 120) + " ..."}
         </Typography>
         <Typography color={"white"} variant="body2">
           {movie?.release_date}

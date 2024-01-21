@@ -39,7 +39,7 @@ function LoginContent({ setOpen }: Props) {
   });
 
   return (
-    <Stack sx={{ padding: 2 }} spacing={2}>
+    <Stack sx={{ padding: 1 }} spacing={2}>
       <Stack>
         <TextField
           name="email"
@@ -90,7 +90,6 @@ function LoginContent({ setOpen }: Props) {
         <Button
           fullWidth
           onClick={() => formik.handleSubmit()}
-          color="error"
           type="button"
           variant="outlined"
           size="large"
