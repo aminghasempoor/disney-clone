@@ -26,7 +26,7 @@ function SecondContent({ title, description, imageURL, reverseLayout }: Props) {
       alignItems={"center"}
       spacing={3}
     >
-      <Stack spacing={3}>
+      <Stack sx={{ px: 3 }} spacing={3}>
         <Typography
           fontWeight={"bold"}
           align="center"

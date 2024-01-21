@@ -5,11 +5,15 @@ import {
   AccordionSummary,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
 const AccordingContent = () => {
+  const theme = useTheme();
+  const isMediumScreen: boolean = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Stack
@@ -18,7 +22,11 @@ const AccordingContent = () => {
         alignItems={"center"}
         spacing={4}
       >
-        <Typography fontWeight={"bold"} align="center" variant="h3">
+        <Typography
+          fontWeight={"bold"}
+          align="center"
+          variant={isMediumScreen ? "h4" : "h3"}
+        >
           Frequently Asked Questions
         </Typography>
         <Stack spacing={2}>

@@ -1,38 +1,100 @@
-import { Stack } from "@mui/material";
-import React, { useEffect } from "react";
+import {
+  Drawer,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import React, { useState } from "react";
 import useUser from "@/lib/app/hooks/useUser";
 import AuthContent from "./AuthContent";
 import WithoutAuthContent from "./WithoutAuthContent";
-interface Props {
-  theme: string;
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
-}
+import NetflixPlusLogo from "@/core/components/svgs/NetflixPlusLogo";
+import Link from "next/link";
 
-function RightContent({ theme, setTheme }: Props) {
+function RightContent() {
   const { token } = useUser();
-  //toggle theme
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    setTheme(storedTheme || "dark");
-  }, []);
+  const theme = useTheme();
+  const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleTheme = () => {
-    const newTheme = "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
   };
-  //toggle theme
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
 
   return (
-    <Stack direction="row" spacing={2}>
-      {!token ? <AuthContent /> : <WithoutAuthContent />}
-      {/* <Button onClick={toggleTheme}>
-            {theme === "dark" ? (
-              <LightMode sx={{ color: "#CBB33B" }} />
-            ) : (
-              <DarkModeIcon sx={{ color: "#A09C96" }} />
-            )}
-          </Button> */}
+    <Stack
+      sx={{ width: "100%" }}
+      direction="row"
+      justifyContent={isUpSm ? "space-between" : "end"}
+      spacing={2}
+    >
+      {isUpSm ? (
+        <>
+          <Stack direction={"row"} alignItems={"center"} spacing={3}>
+            <Link href={"/"}>
+              <Typography fontWeight={"bold"}>Home</Typography>
+            </Link>
+            <Link href={"/main"}>
+              <Typography fontWeight={"bold"}>Movies</Typography>
+            </Link>
+            <Tooltip title="Netflix+   Coming Soon">
+              <IconButton sx={{ p: 0 }}>
+                <NetflixPlusLogo width={25} height={25} />
+              </IconButton>
+            </Tooltip>
+          </Stack>
+          {!token ? <AuthContent /> : <WithoutAuthContent />}
+        </>
+      ) : (
+        <Stack justifyContent={"end"}>
+          {/* Render menu icon for small screens */}
+          <IconButton onClick={handleDrawerOpen}>
+            <MenuIcon />
+          </IconButton>
+
+          {/* Drawer for small screens */}
+          <Drawer
+            sx={{ height: "100%" }}
+            anchor="right"
+            open={drawerOpen}
+            onClose={handleDrawerClose}
+          >
+            <Stack p={2} sx={{ height: "100%", width: 250 }} spacing={3}>
+              <Link href={"/"}>
+                <Typography
+                  align="center"
+                  fontWeight={"bold"}
+                  onClick={handleDrawerClose}
+                >
+                  Home
+                </Typography>
+              </Link>
+              <Link href={"/main"}>
+                <Typography
+                  align="center"
+                  fontWeight={"bold"}
+                  onClick={handleDrawerClose}
+                >
+                  Movies
+                </Typography>
+              </Link>
+              <Tooltip title="Netflix+   Coming Soon">
+                <IconButton sx={{ p: 0 }} onClick={handleDrawerClose}>
+                  <NetflixPlusLogo width={25} height={25} />
+                </IconButton>
+              </Tooltip>
+            </Stack>
+          </Drawer>
+        </Stack>
+      )}
     </Stack>
   );
 }

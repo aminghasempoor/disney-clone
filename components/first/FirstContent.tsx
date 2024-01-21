@@ -1,6 +1,7 @@
 "use client";
 import {
   Button,
+  Grid,
   Stack,
   TextField,
   Typography,
@@ -39,62 +40,59 @@ function FirstContent() {
       <Stack
         spacing={3}
         sx={{
+          width: "100%",
+          px: 2,
           position: "absolute",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
       >
-        <Stack>
+        <Stack spacing={2}>
           <Typography
             align="center"
-            variant={isSmallScreen ? "h6" : isMediumScreen ? "h4" : "h1"}
+            fontWeight={"bold"}
+            variant={isSmallScreen ? "h4" : isMediumScreen ? "h3" : "h1"}
           >
             Unlimited Movies, TV shows
           </Typography>
           <Typography
             align="center"
-            variant={isSmallScreen ? "body1" : isMediumScreen ? "h6" : "h4"}
+            fontWeight={"bold"}
+            variant={isSmallScreen ? "h6" : isMediumScreen ? "h5" : "h4"}
             color={"red"}
           >
             Watch Anywhere Cancel Anytime
           </Typography>
         </Stack>
-        <Stack spacing={2}>
+        <Stack sx={{ px: 2 }} spacing={2}>
           <Typography
             align="center"
-            variant={
-              isSmallScreen
-                ? "body1"
-                : isMediumScreen
-                ? "subtitle2"
-                : "subtitle1"
-            }
+            variant={isMediumScreen ? "subtitle1" : "h6"}
           >
             Ready to watch ? Enter Your Email.
           </Typography>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            justifyContent={"center"}
-            alignItems={"center"}
-            spacing={3}
-          >
-            <TextField
-              size="small"
-              fullWidth
-              color="primary"
-              label="Email Address"
-              variant="outlined"
-            />
-            <Button
-              size="large"
-              variant="outlined"
-              sx={{ bgcolor: "red", width: "100%" }}
-              color="error"
-            >
-              Get Started!!!
-            </Button>
-          </Stack>
+          <Grid sx={{ px: 5 }} container spacing={2}>
+            <Grid item xs={12} md={8}>
+              <TextField
+                size="small"
+                fullWidth
+                color="primary"
+                label="Email Address"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Button
+                size="large"
+                variant="outlined"
+                sx={{ bgcolor: "red", width: "100%" }}
+                color="error"
+              >
+                Get Started!!!
+              </Button>
+            </Grid>
+          </Grid>
         </Stack>
       </Stack>
     </Stack>
