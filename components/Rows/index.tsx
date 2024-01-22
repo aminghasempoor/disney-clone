@@ -48,6 +48,7 @@ function RowComponent({ moviesList, isLoading, errorEcured }: Props) {
           width: "100%",
           py: 2,
           my: 2,
+          scrollBehavior: "smooth",
         }}
         ref={containerRef}
         direction={"row"}

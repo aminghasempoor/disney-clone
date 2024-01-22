@@ -1,5 +1,6 @@
 import FirstComponent from "@/components/first";
 import { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "MUI",
@@ -9,6 +10,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <Head>
+        <link rel="icon" href="/logoicon.ico" />
+      </Head>
       <FirstComponent />
     </>
   );

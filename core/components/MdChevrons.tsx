@@ -18,7 +18,6 @@ function MdChevrons({
   const isLeft = position === "left";
   return (
     <IconButton
-      className="chevron"
       sx={{
         zIndex: 1,
         position: "absolute",
@@ -30,7 +29,7 @@ function MdChevrons({
         opacity: isHovered ? 1 : 0,
         transition: "opacity 0.3s",
       }}
-      onClick={() => handleScroll(isLeft ? -200 : 200)}
+      onClick={() => handleScroll(isLeft ? -500 : 500)}
     >
       <IconComponent fontSize="large" />
     </IconButton>
