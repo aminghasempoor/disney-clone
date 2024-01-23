@@ -12,11 +12,15 @@ import { useFormik } from "formik";
 import React, { Dispatch, SetStateAction } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
+import axios from "axios";
+import { GET_USER_TOKEN } from "@/core/data/apiRoutes";
+import useUser from "@/lib/app/hooks/useUser";
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 function LoginContent({ setOpen }: Props) {
+  const { setToken } = useUser();
   const validationSchema = Yup.object({
     password: Yup.string().required("Password is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -31,6 +35,15 @@ function LoginContent({ setOpen }: Props) {
     initialValues,
     validationSchema,
     onSubmit: (values, props) => {
+      axios
+        .post(GET_USER_TOKEN, {
+          username: "amir",
+          password: "A@g*1379",
+        })
+        .then((response) => {
+          console.log(response);
+          setToken(response.data.token);
+        });
       console.log(values);
       props.setSubmitting(false);
       props.resetForm();

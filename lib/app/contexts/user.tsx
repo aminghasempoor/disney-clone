@@ -1,10 +1,12 @@
+"use client";
+import { GET_USER_ROUTE } from "@/core/data/apiRoutes";
 import axios from "axios";
 import { createContext, useCallback, useEffect, useReducer } from "react";
 interface InitialUser {
   isAuth: false;
   userChangedLanguage: false;
   token: null;
-  user: {};
+  user: userProps;
   getUser?: (callback?: (data: any) => void) => void;
   clearUser?: () => void;
   changeUser?: (user: {}) => void;
@@ -12,12 +14,23 @@ interface InitialUser {
   clearToken?: () => void;
   setToken?: (token: string) => void;
 }
+interface userProps {
+  role: string;
+  permissions: string[];
+  token: string;
+  name: string;
+}
 
 const initialUser: InitialUser = {
   isAuth: false,
   userChangedLanguage: false,
   token: null,
-  user: {},
+  user: {
+    role: "",
+    permissions: [],
+    token: "",
+    name: "",
+  },
 };
 
 const reducer = (state: InitialUser, action: any) => {
@@ -67,7 +80,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const getUser = useCallback(
     (callback?: (data: any) => void) => {
       axios
-        .get("GET_USER_ROUTE", {
+        .get(GET_USER_ROUTE, {
           headers: { authorization: `Bearer ${state.token}` },
         })
         .then(({ data }) => {

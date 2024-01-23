@@ -4,7 +4,6 @@ import useUser from "@/lib/app/hooks/useUser";
 
 const WithAuthMiddleware = ({ children }: { children: React.ReactNode }) => {
   const { isAuth } = useUser();
-  console.log(isAuth);
   return isAuth ? <>{children}</> : <WithAuthComponent />;
 };
 

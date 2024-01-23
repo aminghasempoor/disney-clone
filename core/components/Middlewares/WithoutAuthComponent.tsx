@@ -1,10 +1,13 @@
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import Message from "../Message";
+import Link from "next/link";
+import useUser from "@/lib/app/hooks/useUser";
 const WithoutAuthComponent = ({
   backUrlDecodedPath,
 }: {
   backUrlDecodedPath: string | undefined | string[];
 }) => {
+  const { user } = useUser();
   return (
     <Message
       text={
@@ -12,15 +15,17 @@ const WithoutAuthComponent = ({
           <Typography align="center" fontWeight={"bold"} variant="h6">
             your login is valid and you do not need to login again
           </Typography>
-          {backUrlDecodedPath ? (
-            <Typography align="center" variant="body1">
-              redirecting to previuos page
-            </Typography>
-          ) : (
-            <Typography align="center" variant="body1">
-              redirecting to dashbaord page
-            </Typography>
-          )}
+          <Button variant="outlined">
+            <Link
+              href={
+                user.role[0] == "user" ? "/user-dashboard" : "/expert-dashboard"
+              }
+            >
+              <Typography align="center" variant="body1">
+                redirecting to dashboard
+              </Typography>
+            </Link>
+          </Button>
         </Stack>
       }
     />
