@@ -8,7 +8,6 @@ interface Props {
 
 function ExpertAuth({ children }: Props) {
   const { user } = useUser();
-  console.log(user.permissions);
 
   const hasPermission =
     user.permissions.length === 0
@@ -17,7 +16,7 @@ function ExpertAuth({ children }: Props) {
           user?.permissions?.includes(permission)
         );
 
-  return hasPermission ? <ExpertAuthComponent /> : <>{children}</>;
+  return !hasPermission ? <ExpertAuthComponent /> : <>{children}</>;
 }
 
 export default ExpertAuth;

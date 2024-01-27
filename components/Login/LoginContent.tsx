@@ -44,7 +44,6 @@ function LoginContent({ setOpen }: Props) {
           console.log(response);
           setToken(response.data.token);
         });
-      console.log(values);
       props.setSubmitting(false);
       props.resetForm();
       setOpen(true);

@@ -45,7 +45,6 @@ function RegisterContent({ setOpen }: Props) {
     initialValues,
     validationSchema,
     onSubmit: (values, props) => {
-      console.log(values);
       props.setSubmitting(false);
       props.resetForm();
       setOpen(true);
