@@ -28,21 +28,94 @@ function RightContent() {
         spacing={4}
         sx={{
           px: 5,
+          pb: 2,
           overflow: "auto",
-          maxHeight: "600px",
+          maxHeight: "550px",
           "&::-webkit-scrollbar": {
-            width: "10px",
+            width: "8px",
           },
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#888",
+            backgroundColor: "#78191f",
             borderRadius: "8px",
           },
           "&::-webkit-scrollbar-track": {
-            backgroundColor: "#941820",
+            backgroundColor: "#2222",
           },
         }}
       >
         {/* {user.favorite_movies.length === 0 ? (<Stack></Stack>) : ()} */}
+        <Stack spacing={5} direction={"row"} alignItems={"start"}>
+          <img
+            src="/images/header-image.png"
+            alt="picture"
+            style={{ maxHeight: 400, maxWidth: 350, borderRadius: 5 }}
+          />
+          <Stack sx={{ pr: 4, maxWidth: 700 }} spacing={3}>
+            <Typography fontWeight={"bold"} variant="h5">
+              Amin Ghasempoor
+            </Typography>
+            <Typography textAlign={"justify"} variant="body1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              rerum, dolorem dignissimos nobis voluptas amet iusto officia
+              deleniti quod quasi quas magni quisquam vero tempore fuga
+            </Typography>
+            <Typography variant="caption">2024-12-25</Typography>
+          </Stack>
+        </Stack>
+        <Stack spacing={5} direction={"row"} alignItems={"start"}>
+          <img
+            src="/images/header-image.png"
+            alt="picture"
+            style={{ maxHeight: 400, maxWidth: 350, borderRadius: 5 }}
+          />
+          <Stack sx={{ pr: 4, maxWidth: 700 }} spacing={3}>
+            <Typography fontWeight={"bold"} variant="h5">
+              Amin Ghasempoor
+            </Typography>
+            <Typography textAlign={"justify"} variant="body1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              rerum, dolorem dignissimos nobis voluptas amet iusto officia
+              deleniti quod quasi quas magni quisquam vero tempore fuga
+            </Typography>
+            <Typography variant="caption">2024-12-25</Typography>
+          </Stack>
+        </Stack>
+        <Stack spacing={5} direction={"row"} alignItems={"start"}>
+          <img
+            src="/images/header-image.png"
+            alt="picture"
+            style={{ maxHeight: 400, maxWidth: 350, borderRadius: 5 }}
+          />
+          <Stack sx={{ pr: 4, maxWidth: 700 }} spacing={3}>
+            <Typography fontWeight={"bold"} variant="h5">
+              Amin Ghasempoor
+            </Typography>
+            <Typography textAlign={"justify"} variant="body1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              rerum, dolorem dignissimos nobis voluptas amet iusto officia
+              deleniti quod quasi quas magni quisquam vero tempore fuga
+            </Typography>
+            <Typography variant="caption">2024-12-25</Typography>
+          </Stack>
+        </Stack>
+        <Stack spacing={5} direction={"row"} alignItems={"start"}>
+          <img
+            src="/images/header-image.png"
+            alt="picture"
+            style={{ maxHeight: 400, maxWidth: 350, borderRadius: 5 }}
+          />
+          <Stack sx={{ pr: 4, maxWidth: 700 }} spacing={3}>
+            <Typography fontWeight={"bold"} variant="h5">
+              Amin Ghasempoor
+            </Typography>
+            <Typography textAlign={"justify"} variant="body1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              rerum, dolorem dignissimos nobis voluptas amet iusto officia
+              deleniti quod quasi quas magni quisquam vero tempore fuga
+            </Typography>
+            <Typography variant="caption">2024-12-25</Typography>
+          </Stack>
+        </Stack>
         <Stack spacing={5} direction={"row"} alignItems={"start"}>
           <img
             src="/images/header-image.png"
