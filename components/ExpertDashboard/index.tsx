@@ -1,7 +1,14 @@
+import { Grid, Stack } from "@mui/material";
 import React from "react";
+import SidebarContent from "./SidebarContent";
+import MainContent from "./MainContent";
 
-function ExpertDashboardComponent() {
-  return <div>ExpertDashboardComponent</div>;
+function MdContent() {
+  return (
+    <Stack>
+      <MainContent />
+    </Stack>
+  );
 }
 
-export default ExpertDashboardComponent;
+export default MdContent;

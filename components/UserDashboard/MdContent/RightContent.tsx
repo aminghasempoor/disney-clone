@@ -29,18 +29,6 @@ function RightContent() {
         sx={{
           px: 5,
           pb: 2,
-          overflow: "auto",
-          maxHeight: "550px",
-          "&::-webkit-scrollbar": {
-            width: "8px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#78191f",
-            borderRadius: "8px",
-          },
-          "&::-webkit-scrollbar-track": {
-            backgroundColor: "#2222",
-          },
         }}
       >
         {/* {user.favorite_movies.length === 0 ? (<Stack></Stack>) : ()} */}

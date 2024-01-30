@@ -1,9 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import LeftContent from "./LeftContent";
-import RightContent from "./RightContent";
+import SidebarContent from "./SidebarContent";
 
-function MdContent() {
+function ExpertDashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <Grid container sx={{ pt: 15 }}>
       {/* Left Content with sticky position */}
@@ -12,15 +11,15 @@ function MdContent() {
         sm={2}
         sx={{ position: { sm: "sticky" }, top: 0, height: "100%" }}
       >
-        <LeftContent />
+        <SidebarContent />
       </Grid>
 
       {/* Right Content */}
       <Grid item sm={10}>
-        <RightContent />
+        {children}
       </Grid>
     </Grid>
   );
 }
 
-export default MdContent;
+export default ExpertDashboardLayout;
