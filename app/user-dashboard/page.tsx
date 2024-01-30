@@ -5,11 +5,11 @@ import React from "react";
 
 function UserDashboard() {
   return (
-    <WithAuthMiddleware>
-      <UserAuth>
-        <UserDashboardComponent />
-      </UserAuth>
-    </WithAuthMiddleware>
+    // <WithAuthMiddleware>
+    //   <UserAuth>
+    <UserDashboardComponent />
+    //   </UserAuth>
+    // </WithAuthMiddleware>
   );
 }
 
