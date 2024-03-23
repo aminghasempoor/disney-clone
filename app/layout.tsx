@@ -1,12 +1,10 @@
-"use client";
 import "./globals.css";
 import "@fontsource/roboto/300.css";
 import HeaderLayout from "@/layouts/Header";
 import { UserProvider } from "@/lib/app/contexts/user";
 import { LoadingProvider } from "@/lib/app/contexts/loading";
 import AppLayout from "@/layouts/AppLayouts";
-import { theme } from "@/core/utils/theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import ThemeUI from "@/components/ThemeUI";
 
 export default function RootLayout({
   children,
@@ -15,9 +13,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, padding: 0, backgroundColor: "#000000" }}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
+      <body>
+        <ThemeUI>
           <UserProvider>
             <LoadingProvider>
               <AppLayout>
@@ -26,7 +23,7 @@ export default function RootLayout({
               </AppLayout>
             </LoadingProvider>
           </UserProvider>
-        </ThemeProvider>
+        </ThemeUI>
       </body>
     </html>
   );

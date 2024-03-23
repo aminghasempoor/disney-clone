@@ -10,7 +10,6 @@ export default function AuthLayout({
 }) {
   return (
     <Stack>
-      {/* Background Image */}
       <Image
         src={BackgroundImage}
         fill

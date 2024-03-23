@@ -1,3 +1,4 @@
+"use client";
 import useLoading from "@/lib/app/hooks/useLoading";
 import useMovies from "@/lib/app/hooks/useMovies";
 import useUser from "@/lib/app/hooks/useUser";

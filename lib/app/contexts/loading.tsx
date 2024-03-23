@@ -1,3 +1,4 @@
+"use client";
 import LoadingHardPage from "@/core/components/LoadingHardPage";
 import { createContext, ReactNode, useContext, useState } from "react";
 
