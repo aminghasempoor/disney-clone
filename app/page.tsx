@@ -10,9 +10,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Head>
-        <link rel="icon" href="/logoicon.ico" />
-      </Head>
       <FirstComponent />
     </>
   );

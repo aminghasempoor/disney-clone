@@ -9,17 +9,13 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import React, { Dispatch, SetStateAction } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
 import axios from "axios";
 import { GET_USER_TOKEN } from "@/core/data/apiRoutes";
 import useUser from "@/lib/app/hooks/useUser";
-interface Props {
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
 
-function LoginContent({ setOpen }: Props) {
+function LoginContent() {
   const { setToken } = useUser();
   const validationSchema = Yup.object({
     password: Yup.string().required("Password is required"),
@@ -46,7 +42,6 @@ function LoginContent({ setOpen }: Props) {
         });
       props.setSubmitting(false);
       props.resetForm();
-      setOpen(true);
     },
   });
 

@@ -9,14 +9,10 @@ import {
 } from "@mui/material";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import React, { Dispatch, SetStateAction } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import Link from "next/link";
-interface Props {
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
 
-function RegisterContent({ setOpen }: Props) {
+function RegisterContent() {
   const validationSchema = Yup.object({
     password: Yup.string().required("Password is required"),
     confirm_password: Yup.mixed()
@@ -47,7 +43,6 @@ function RegisterContent({ setOpen }: Props) {
     onSubmit: (values, props) => {
       props.setSubmitting(false);
       props.resetForm();
-      setOpen(true);
     },
   });
 
