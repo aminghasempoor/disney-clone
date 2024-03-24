@@ -9,6 +9,8 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
+import backgroundImage from "@/public/images/header-image.png";
+import Image from "next/image";
 
 function FirstContent() {
   const theme = useTheme();
@@ -16,23 +18,17 @@ function FirstContent() {
   const isSmallScreen: boolean = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack>
-      <img
-        src={"/images/header-image.png"}
-        style={{
-          objectFit: "cover",
-          objectPosition: "center",
-          width: "100vw",
-          height: "100vh",
-        }}
-        alt="picture"
+      <Image
+        src={backgroundImage}
+        fill
+        priority
+        style={{ objectFit: "cover" }}
+        alt="BackgroundImage"
       />
       <Stack
         sx={{
-          position: "absolute",
-          backgroundColor: "#010101",
-          opacity: 0.6,
-          top: 0,
-          left: 0,
+          backgroundColor: "#000",
+          opacity: 0.5,
           width: "100%",
           height: "100vh",
         }}
@@ -52,7 +48,7 @@ function FirstContent() {
           <Typography
             align="center"
             fontWeight={"bold"}
-            variant={isSmallScreen ? "h4" : isMediumScreen ? "h3" : "h1"}
+            variant={isSmallScreen ? "h4" : isMediumScreen ? "h3" : "h2"}
           >
             Unlimited Movies, TV shows
           </Typography>
@@ -65,14 +61,26 @@ function FirstContent() {
             Watch Anywhere Cancel Anytime
           </Typography>
         </Stack>
-        <Stack sx={{ px: 2 }} spacing={2}>
-          <Typography
-            align="center"
-            variant={isMediumScreen ? "subtitle1" : "h6"}
-          >
+        <Stack
+          sx={{ px: 2 }}
+          direction={"column"}
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <Typography align="center" variant={isMediumScreen ? "h6" : "h5"}>
             Ready to watch ? Enter Your Email.
           </Typography>
-          <Grid sx={{ px: 5 }} container spacing={2}>
+          <Grid
+            sx={{
+              width: "70%",
+            }}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            container
+            spacing={2}
+          >
             <Grid item xs={12} md={8}>
               <TextField
                 size="small"

@@ -6,7 +6,12 @@ import React from "react";
 
 function WithoutAuthContent() {
   return (
-    <Stack direction={"row"}>
+    <Stack
+      direction={{ xs: "column", sm: "row" }}
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       <Link href="/register">
         <Button color="error" variant="text" endIcon={<EditNoteIcon />}>
           <Typography fontWeight={"bold"} color={"rgb(219, 32, 44)"}>

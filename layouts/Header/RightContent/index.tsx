@@ -2,7 +2,6 @@ import {
   Drawer,
   IconButton,
   Stack,
-  Tooltip,
   Typography,
   useMediaQuery,
   useTheme,
@@ -12,7 +11,6 @@ import React, { useState } from "react";
 import useUser from "@/lib/app/hooks/useUser";
 import AuthContent from "./AuthContent";
 import WithoutAuthContent from "./WithoutAuthContent";
-import NetflixPlusLogo from "@/core/components/svgs/NetflixPlusLogo";
 import Link from "next/link";
 
 function RightContent() {
@@ -20,15 +18,6 @@ function RightContent() {
   const theme = useTheme();
   const isUpSm = useMediaQuery(theme.breakpoints.up("sm"));
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setDrawerOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false);
-  };
-
   return (
     <Stack
       sx={{ width: "100%" }}
@@ -45,52 +34,29 @@ function RightContent() {
             <Link href={"/main"}>
               <Typography fontWeight={"bold"}>Movies</Typography>
             </Link>
-            <Tooltip title="Netflix+   Coming Soon">
-              <IconButton sx={{ p: 0 }}>
-                <NetflixPlusLogo width={25} height={25} />
-              </IconButton>
-            </Tooltip>
           </Stack>
           {token ? <AuthContent /> : <WithoutAuthContent />}
         </>
       ) : (
         <Stack justifyContent={"end"}>
-          {/* Render menu icon for small screens */}
-          <IconButton onClick={handleDrawerOpen}>
+          <IconButton
+            onClick={() => {
+              setDrawerOpen(true);
+            }}
+          >
             <MenuIcon />
           </IconButton>
-
-          {/* Drawer for small screens */}
           <Drawer
-            sx={{ height: "100%" }}
-            anchor="right"
+            sx={{ height: "70%" }}
+            elevation={0}
+            anchor="left"
             open={drawerOpen}
-            onClose={handleDrawerClose}
+            onClose={() => {
+              setDrawerOpen(false);
+            }}
           >
-            <Stack p={2} sx={{ height: "100%", width: 250 }} spacing={3}>
-              <Link href={"/"}>
-                <Typography
-                  align="center"
-                  fontWeight={"bold"}
-                  onClick={handleDrawerClose}
-                >
-                  Home
-                </Typography>
-              </Link>
-              <Link href={"/main"}>
-                <Typography
-                  align="center"
-                  fontWeight={"bold"}
-                  onClick={handleDrawerClose}
-                >
-                  Movies
-                </Typography>
-              </Link>
-              <Tooltip title="Netflix+   Coming Soon">
-                <IconButton sx={{ p: 0 }} onClick={handleDrawerClose}>
-                  <NetflixPlusLogo width={25} height={25} />
-                </IconButton>
-              </Tooltip>
+            <Stack sx={{ height: "100%", width: 150, py: 8 }} spacing={3}>
+              {token ? <AuthContent /> : <WithoutAuthContent />}
             </Stack>
           </Drawer>
         </Stack>
