@@ -28,7 +28,7 @@ function FirstContent() {
       <Stack
         sx={{
           backgroundColor: "#000",
-          opacity: 0.5,
+          opacity: 0.3,
           width: "100%",
           height: "100vh",
         }}
@@ -91,12 +91,7 @@ function FirstContent() {
               />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Button
-                size="large"
-                variant="outlined"
-                sx={{ bgcolor: "red", width: "100%" }}
-                color="error"
-              >
+              <Button size="large" variant="outlined" sx={{ width: "100%" }}>
                 Get Started!!!
               </Button>
             </Grid>
